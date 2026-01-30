@@ -1,5 +1,5 @@
 import numpy as np
-
+from game import SOL, BORD1, BORD2, PLAFOND
 dt=0.06
 g=9.81
 alpha=0.5
@@ -28,7 +28,7 @@ class Car :
 
 
     def onsol(self):
-        if self.y==0:
+        if self.y <= self.height/2 + SOL:
             return True
         return False
 

@@ -1,10 +1,10 @@
 import pygame
-#from car import Car
+from car import Car
 from Ballon import Ballon
 dt = 0.05
 BORD1, BORD2 = 75, 1320
-PLAFOND = 90
-SOL = 690
+PLAFOND = 690
+SOL = 90
 
 
 class Game:    
@@ -17,7 +17,7 @@ class Game:
         
         self.score = 0
         self.time = 0
-        #self.car1 = Car(0,0,0,0)
+        self.car1 = Car(300,300,0,0)
         self.ballon = Ballon(700, 500, 0, 0, 2, 80)
 
         
