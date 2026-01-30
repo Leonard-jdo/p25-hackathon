@@ -1,10 +1,14 @@
 import pygame
 from car import Car
 from Ballon import Ballon
+<<<<<<< HEAD
 dt = 0.06
 BORD1, BORD2 = 75, 1320
 PLAFOND = 90
 SOL = 690
+=======
+from constantes import dt, BORD1,BORD2,PLAFOND,SOL
+>>>>>>> fd661a26cd11f14f0eeb82c9062c53174502d0dc
 
 
 class Game:    
