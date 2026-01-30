@@ -35,9 +35,9 @@ class Car:
     
     def sens_h(self): # Bas / Haut (Rotation)
         if self.fleche_bas:
-            return -1
-        elif self.fleche_haut:
             return 1
+        elif self.fleche_haut:
+            return -1
         return 0
     
     def boost(self):
