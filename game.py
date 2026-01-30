@@ -13,17 +13,24 @@ class Game:
         self.score = 0
         self.time = 0
         #self.car1 = Car(0,0,0,0)
-        self.ballon = Ballon(100, 100, 0, 0, 2, 10)
+        self.ballon = Ballon(700, 500, 0, 0, 2, 80)
+
+        
 
 
     def init_affichage(self):
         pygame.init()
-        pygame.display.set_mode((1400, 1800))
-        background = pygame.image.load("bcakground.png").convert()
-        self.background = pygame.transform.scale(background, (1400, 1800))
-        self.img_ballon = pygame.image.load("balle.png")
 
-        self.screen = pygame.display.set_mode((1400, 1800))
+        self.SCREEN_WIDTH = 1400
+        self.SCREEN_HEIGHT = 900
+        pygame.display.set_mode((self.SCREEN_WIDTH,self.SCREEN_HEIGHT))
+        background = pygame.image.load("bcakground.png").convert()
+        self.background = pygame.transform.scale(background, (self.SCREEN_WIDTH,self.SCREEN_HEIGHT))
+        img_ballon = pygame.image.load("balle.png")
+        self.img_ballon = pygame.transform.scale(img_ballon, (self.ballon.r,self.ballon.r))
+
+
+        self.screen = pygame.display.set_mode((self.SCREEN_WIDTH,self.SCREEN_HEIGHT))
         self.clock = pygame.time.Clock()
         self.screen.blit(background, (0, 0))
 
