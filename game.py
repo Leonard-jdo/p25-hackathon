@@ -3,6 +3,7 @@ from car import Car
 from Ballon import Ballon
 from constantes import dt, BORD1,BORD2,PLAFOND,SOL, alpha,g
 from contact import contact_ballon
+import math
 
 class Game:    
 
@@ -15,7 +16,7 @@ class Game:
         self.score = 0
         self.time = 0
         self.car1 = Car(300,300,0,0)
-        self.ballon = Ballon(0, 0, 2, 80)
+        self.ballon = Ballon(0, 0, 6, 80)
 
 
     def raffraichir(self):
@@ -24,7 +25,6 @@ class Game:
         self.car1.update()
         self.car1.contact_mur()
         contact_ballon(self.car1, self.ballon, 0.5, 15)
-        print(self.car1.x, self.car1.y,)
         
 
 
@@ -51,7 +51,8 @@ class Game:
 
         # 1. Gestion Voiture
         img_car1 = pygame.transform.scale(self.loaded_car1, (100, 50))
-        img_car1_tournee = pygame.transform.rotate(img_car1, self.car1.teta)
+        angle_degres = -math.degrees(self.car1.teta)
+        img_car1_tournee = pygame.transform.rotate(img_car1, angle_degres)
         new_rect = img_car1_tournee.get_rect()
 
         target_y =  self.car1.y
