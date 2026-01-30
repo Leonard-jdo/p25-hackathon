@@ -26,7 +26,7 @@ class Car :
         self.fleche_droite=fleche_droite
         self.fleche_bas=fleche_bas
         self.fleche_haut=fleche_haut
-        self.boost = b_boost
+        self.boost_bool = b_boost
         self.saut=b_saut
 
 
@@ -45,7 +45,7 @@ class Car :
         return 0
     
     def boost(self):
-        if self.boost==True:
+        if self.boost_bool==True:
             return 1
         return 0
 
@@ -124,3 +124,4 @@ class Car :
 #discrétiqse l'espace et à chaque intstant jhe met à) jour (uodate) à partir de l'accélératiob si le mec boost et qu'il saute l'angle teta impose ou la voiture va aller
 #en input j'ai le vecteur de booléen de cez qu'il fait : accélérer, booster, gauche droite
 #
+
