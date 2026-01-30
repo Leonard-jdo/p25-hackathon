@@ -1,5 +1,5 @@
 import numpy as np
-from game import SOL, BORD1, BORD2, PLAFOND
+from constantes import SOL, BORD1, BORD2, PLAFOND
 dt=0.05
 g=9.81
 alpha=0.5
