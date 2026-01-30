@@ -12,12 +12,18 @@ beta = 0.8
 class Ballon:
 
     def __init__(self, vx, vy,m,r):
-        self.x = (BORD1+BORD2)/2 -35
+        self.x = (BORD1+BORD2)/2
         self.y = SOL + r
         self.vx = vx
         self.vy = vy
         self.m = m
         self.r = r
+        self.BUT_BAS = 50
+        self.BUT_HAUT = 150
+    
+    def reset_position(self):
+        self.x = (BORD1+BORD2)/2
+        self.y = SOL + self.r
 
     def is_on_floor(self):
         if self.y <= self.r:
@@ -35,13 +41,21 @@ class Ballon:
         self.corr_contact()
 
     def corr_contact(self):
-        if self.x + self.r >= BORD2:#contact à droite
-            self.x = BORD2 - self.r  
-            self.vx = -self.vx * beta 
+        if self.x + self.r >= BORD2:
+            if self.BUT_BAS < self.y < self.BUT_HAUT:
+                if self.x > BORD2: # La balle a franchi la ligne
+                    return "BUT !!!" 
+            else:
+                self.x = BORD2 - self.r  
+                self.vx = -self.vx * beta
             
-        elif self.x - self.r <= BORD1:#contact à gauche
-            self.x = self.r + BORD1               
-            self.vx = -self.vx * beta
+        elif self.x - self.r <= BORD1:
+            if self.BUT_BAS < self.y < self.BUT_HAUT:
+                if self.x < BORD1:
+                    return "BUT !!!"
+            else:
+                self.x = self.r + BORD1               
+                self.vx = -self.vx * beta
             
         if self.y - self.r <= SOL:#contact au sol
             self.y = self.r + SOL               
