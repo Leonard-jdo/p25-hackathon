@@ -1,6 +1,7 @@
 import numpy as np
 from constantes import SOL, BORD1, BORD2, PLAFOND
 from math import cos
+from input import inputs
 
 dt=0.06
 g=9.81
@@ -15,7 +16,7 @@ k=10
 def to_pi_minuspi(x):
     return x
 
-class Car : 
+class Car: 
     def __init__(self,x=500,y=90,vx=0,vy=0,teta=0,teta_dot=0):
         self.m = 15
         self.x = x
@@ -33,6 +34,9 @@ class Car :
         self.boost_bool = False
         self.saut=False
 
+
+    def get_inputs(self):
+        self.fleche_gauche, self.fleche_droite, self.fleche_bas, self.fleche_haut, self.saut, self.boost_bool, a = inputs()
 
     def sens_v(self) :  #+-1,0 (gauche/droite)
         if self.fleche_gauche==True:
@@ -59,6 +63,7 @@ class Car :
         return False
 
     def update(self):
+        self.get_inputs()
         if self.onsol() and self.saut==False: 
             self.vx=(-alpha*dt/self.m +1)*self.vx +self.sens_h()*v_h + self.boost()*v_boost*self.sens_h()
 
