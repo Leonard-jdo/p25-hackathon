@@ -1,7 +1,5 @@
 import numpy as np
-BORD1, BORD2 = 75, 1320
-PLAFOND = 90
-SOL = 690
+from constantes import SOL, BORD1, BORD2, PLAFOND
 dt=0.06
 g=9.81
 alpha=0.5
