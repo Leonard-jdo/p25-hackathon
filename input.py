@@ -1,3 +1,5 @@
+import pygame
+
 def input():
 
     accelerated = False
