@@ -1,13 +1,18 @@
+import pygame
+
 class Game:
-    background = pygame.image.load("background.jpg").convert()
+    pygame.init()
+    pygame.display.set_mode((800, 600))
+    background = pygame.image.load("bcakground.png").convert()
     background = pygame.transform.scale(background, (800, 600))
+    
 
     #ballon = pygame.image.load("ballon.png").convert_alpha()
     #car1 = pygame.image.load("car1.png").convert_alpha()
     #car2 = pygame.image.load("car2.png").convert_alpha()
     
     def __init__(self):
-        pygame.init()
+        
         self.screen = pygame.display.set_mode((800, 600))
         self.clock = pygame.time.Clock()
         self.screen.blit(background, (0, 0))
