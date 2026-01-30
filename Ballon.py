@@ -1,3 +1,8 @@
+dt = 
+bord1 =
+bord2 = 
+plafond = 
+sol = 
 alpha = 1e-3
 beta = 0.8
 g = 9,81
@@ -26,8 +31,7 @@ class Ballon:
         self.y += self.vy * dt
         self.corr_contact()
 
-    def corr_contact(self, taille):
-        (bord1, bord2, y_sol, y_plafond) = taille
+    def corr_contact(self):
         if self.x + self.r > bord2:#contact à droite
             self.x = bord2 - self.r  
             self.vx = -self.vx * beta 
@@ -36,12 +40,12 @@ class Ballon:
             self.x = self.r + bord1               
             self.vx = -self.vx * beta
             
-        if self.y - self.r < self.sol:#contact au sol
-            self.y = self.r + y_sol               
+        if self.y - self.r < sol:#contact au sol
+            self.y = self.r + sol               
             self.vy = -self.vy * beta 
 
-        if self.y + self.r > y_plafond:#contact mur 
-            self.y = y_plafond - self.r 
+        if self.y + self.r > plafond:#contact mur 
+            self.y = plafond - self.r 
             self.vy = -self.vy * beta
 
     
