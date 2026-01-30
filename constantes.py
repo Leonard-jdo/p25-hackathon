@@ -6,8 +6,8 @@ v_boost=10
 demi_h=0.5
 demi_l=0.56
 k=10
-dt = 0.05
-e=0.5
+dt = 0.03
+e=0.05
 C=20
 
 BORD1, BORD2 = 75, 1320

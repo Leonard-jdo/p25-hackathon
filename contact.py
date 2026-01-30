@@ -7,7 +7,7 @@ from game import Game
 def contact_ballon(car,ballon,e,C):
     k=0
 
-    pts_proche=0
+    pts_proche=999999999999999999
 
     pts_proches=car.get_contact_points()
     Vecteurs_n=car.get_normal_vectors()
