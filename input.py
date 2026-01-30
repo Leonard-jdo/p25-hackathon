@@ -1,12 +1,14 @@
 import pygame
 
-def input():
+def inputs():
 
     accelerated = False
     descelerated = False
     jump = False
+    sens_horaire=False
+    sens_antihoraire=False
     boost = False
-
+    quitter_jeu = False
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             quitter_jeu = True  
@@ -27,6 +29,6 @@ def input():
         sens_horaire = True
     
               
-    param = [accelerated, descelerated, sens_horaire, sens_antihoraire, jump, boost, quitter_jeu]
+    param = accelerated, descelerated, sens_horaire, sens_antihoraire, jump, boost, quitter_jeu
 
     return(param)
