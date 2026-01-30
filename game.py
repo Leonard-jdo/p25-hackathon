@@ -17,7 +17,7 @@ class Game:
         pygame.display.flip()
 
 
-    def raffraichir(self, x_ballon, z_ballon, x_car1, z_car1, x_car2, z_car2)
+    def raffraichir(self, x_ballon, z_ballon, x_car1, z_car1, x_car2, z_car2):
         
         self.screen.blit(background, (0, 0))
         self.screen.blit(ballon, (x_ballon, z_ballon))
@@ -25,6 +25,7 @@ class Game:
         self.screen.blit(car, (x_car2, z_car2))
         pygame.display.flip()
         clock.tick(60)
+
 
 
 
