@@ -1,10 +1,9 @@
 import pygame
+#from car import Car
+from Ballon import Ballon
 
 class Game:
-    pygame.init()
-    pygame.display.set_mode((800, 600))
-    background = pygame.image.load("bcakground.png").convert()
-    background = pygame.transform.scale(background, (800, 600))
+    
     
 
     #ballon = pygame.image.load("ballon.png").convert_alpha()
@@ -13,26 +12,34 @@ class Game:
     
     def __init__(self):
         
-        self.screen = pygame.display.set_mode((800, 600))
+        self.score = 0
+        self.time = 0
+        #self.car1 = Car(0,0,0,0)
+        self.ballon = Ballon(100, 100, 0, 0, 2, 10)
+
+
+    def init_affichage(self):
+        pygame.init()
+        pygame.display.set_mode((1400, 1800))
+        background = pygame.image.load("bcakground.png").convert()
+        self.background = pygame.transform.scale(background, (1400, 1800))
+        self.img_ballon = pygame.image.load("balle.png")
+
+        self.screen = pygame.display.set_mode((1400, 1800))
         self.clock = pygame.time.Clock()
         self.screen.blit(background, (0, 0))
-        #self.screen.blit(ballon, (400, 300))
-        #self.screen.blit(car1, (0, 0))
-       # self.screen.blit(car2, (800, 0))
+
+
         pygame.display.flip()
 
 
-    def raffraichir(self, x_ballon, z_ballon, x_car1, z_car1, x_car2, z_car2):
+    def raffraichir(self):
         
-        self.screen.blit(background, (0, 0))
-        self.screen.blit(ballon, (x_ballon, z_ballon))
-        self.screen.blit(car, (x_car1, z_car1))
-        self.screen.blit(car, (x_car2, z_car2))
+        self.screen.blit(self.background, (0, 0))
+        self.screen.blit(self.img_ballon, (self.ballon.x, self.ballon.y))
+
         pygame.display.flip()
-        clock.tick(60)
-
-
-Game()
+        self.clock.tick(30)
 
 
 
