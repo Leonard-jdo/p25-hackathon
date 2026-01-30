@@ -12,11 +12,12 @@ class Game:
     #car2 = pygame.image.load("car2.png").convert_alpha()
     
     def __init__(self):
-        
+        self.score_orange = 0
+        self.score_bleu = 0
         self.score = 0
         self.time = 0
         self.car1 = Car(300,300,0,0)
-        self.ballon = Ballon(0, 0, 2, 80)
+        self.ballon = Ballon(0, 0, 6, 80)
         self.goal_width = 100
         self.goal_height = 300
         
@@ -43,17 +44,25 @@ class Game:
         resultat = self.ballon.corr_contact()
         if resultat == "GOAL_LEFT":
             self.score_orange += 1 # e
-            self.message_but = "BUT À GAUCHE !"
+            self.message_but = "BUT"
             self.couleur_but = (255, 165, 0) 
             self.affichage_but_timer = 60    
-            self.ballon.reset_position()    
+            self.ballon.reset_position()
+            self.car1.x = 500
+            self.car1.y = 300
+            self.car1.vx = 0
+            self.car1.vy = 0 
 
         elif resultat == "GOAL_RIGHT":
             self.score_bleu += 1
-            self.message_but = "BUT À DROITE !"
+            self.message_but = "BUT"
             self.couleur_but = (0, 0, 255)   # Bleu
             self.affichage_but_timer = 60
             self.ballon.reset_position()
+            self.car1.x = 500
+            self.car1.y = 300
+            self.car1.vx = 0
+            self.car1.vy = 0 
         
 
 

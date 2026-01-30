@@ -13,17 +13,19 @@ class Ballon:
 
     def __init__(self, vx, vy,m,r):
         self.x = (BORD1+BORD2)/2
-        self.y = SOL + r
+        self.y = SOL
         self.vx = vx
         self.vy = vy
         self.m = m
         self.r = r
-        self.BUT_BAS = 50
-        self.BUT_HAUT = 150
+        self.BUT_BAS = 90
+        self.BUT_HAUT = 500
     
     def reset_position(self):
         self.x = (BORD1+BORD2)/2
-        self.y = SOL + self.r
+        self.y = SOL
+        self.vx = 0
+        self.vy = 0
 
     def is_on_floor(self):
         if self.y <= self.r:
@@ -41,29 +43,43 @@ class Ballon:
         self.corr_contact()
 
     def corr_contact(self):
+        marge = 1 # Petite marge pour éviter de rester collé
+
+        # --- MUR DROIT ET BUT DROIT ---
         if self.x + self.r >= BORD2:
-            if self.BUT_BAS < self.y < self.BUT_HAUT:
-                if self.x > BORD2: # La balle a franchi la ligne
-                    return "BUT !!!" 
+            # Si on est dans la zone du but
+            if self.BUT_BAS <= self.y <= self.BUT_HAUT:
+                if self.x > BORD2:
+                    return "GOAL_RIGHT"
+                # Optionnel : si tu veux que ça rebondisse quand même 
+                # tant que le centre n'a pas traversé :
+                # self.x = BORD2 - self.r - marge
+                # self.vx = -self.vx * beta
             else:
-                self.x = BORD2 - self.r  
+                # Rebond sur le mur (on ajoute -marge pour décoller du mur)
+                self.x = BORD2 - self.r - marge  
                 self.vx = -self.vx * beta
-            
+
+        # --- MUR GAUCHE ET BUT GAUCHE ---
         elif self.x - self.r <= BORD1:
-            if self.BUT_BAS < self.y < self.BUT_HAUT:
+            if self.BUT_BAS <= self.y <= self.BUT_HAUT:
                 if self.x < BORD1:
-                    return "BUT !!!"
+                    return "GOAL_LEFT"
             else:
-                self.x = self.r + BORD1               
+                self.x = BORD1 + self.r + marge # On décolle vers la droite
                 self.vx = -self.vx * beta
-            
-        if self.y - self.r <= SOL:#contact au sol
-            self.y = self.r + SOL               
+
+        # --- SOL ---
+        if self.y - self.r <= SOL:
+            self.y = SOL + self.r + marge
             self.vy = -self.vy * beta 
 
-        if self.y + self.r >= PLAFOND:#contact mur 
-            self.y = PLAFOND - self.r 
+        # --- PLAFOND ---
+        if self.y + self.r >= PLAFOND:
+            self.y = PLAFOND - self.r - marge
             self.vy = -self.vy * beta
+        
+        return None
 
     
 
