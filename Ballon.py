@@ -1,4 +1,3 @@
-from game import dt, y_sol, y_plafond
 alpha = 1e-3
 beta = 0.8
 g = 9,81

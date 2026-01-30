@@ -1,10 +1,8 @@
 import pygame
 #from car import Car
-from ballon import Ballon
-
-class Game:
-    
-    
+from Ballon import Ballon
+dt = 0.05
+class Game:    
 
     #ballon = pygame.image.load("ballon.png").convert_alpha()
     #car1 = pygame.image.load("car1.png").convert_alpha()
