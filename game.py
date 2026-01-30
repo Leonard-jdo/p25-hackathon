@@ -1,8 +1,8 @@
 import pygame
 from car import Car
 from Ballon import Ballon
-from constantes import dt, BORD1,BORD2,PLAFOND,SOL
-
+from constantes import dt, BORD1,BORD2,PLAFOND,SOL, alpha
+from contact import contact_ballon
 
 class Game:    
 
@@ -17,6 +17,13 @@ class Game:
         self.car1 = Car(300,300,0,0)
         self.ballon = Ballon(700, 500, 0, 0, 2, 80)
 
+
+    def raffraichir(self):
+
+        self.ballon.gravity_without_contact(10e-3, 10e-2)
+        self.car1.update()
+        self.car1.contact_mur()
+        contact_ballon(self.car1, self.ballon, 0.5, 15, self.ballon.m)
         
 
 
@@ -46,8 +53,10 @@ class Game:
         pygame.display.flip()
 
 
-    def raffraichir(self):
+    def raffraichir_img(self):
 
+        self.raffraichir()
+        
         img_car1 = pygame.transform.scale(self.loaded_car1, (self.car1.x,self.car1.y))
         img_car1_tournee = pygame.transform.rotate(img_car1, self.car1.teta)
         new_rect = img_car1_tournee.get_rect()

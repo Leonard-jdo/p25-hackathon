@@ -6,9 +6,9 @@ bord1 = 10
 bord2 = 1780
 plafond = 500
 sol = 10
-alpha = 1e-3
+
 beta = 0.8
-g = 9,81
+
 class Ballon:
 
     def __init__(self, vx, vy,m,r):

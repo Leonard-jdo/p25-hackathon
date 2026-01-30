@@ -1,5 +1,7 @@
 import numpy as np
 from constantes import SOL, BORD1, BORD2, PLAFOND
+from math import cos
+
 dt=0.06
 g=9.81
 alpha=0.5
@@ -10,9 +12,11 @@ demi_h=0.5
 demi_l=0.56
 k=10
 
+def to_pi_minuspi(x):
+    return x
 
 class Car : 
-    def __init__(self,x,y,vx,vy,teta,teta_dot,b_boost,fleche_gauche,fleche_droite,fleche_bas,fleche_haut,b_saut):
+    def __init__(self,x=500,y=90,vx=0,vy=0,teta=0,teta_dot=0):
         self.m = 15
         self.x = x
         self.length=10
@@ -22,12 +26,12 @@ class Car :
         self.vy=vy
         self.teta=teta   #angle de la voiture
         self.teta_dot=teta_dot #vitesse angulaire
-        self.fleche_gauche=fleche_gauche
-        self.fleche_droite=fleche_droite
-        self.fleche_bas=fleche_bas
-        self.fleche_haut=fleche_haut
-        self.boost_bool = b_boost
-        self.saut=b_saut
+        self.fleche_gauche=False
+        self.fleche_droite=False
+        self.fleche_bas=False
+        self.fleche_haut=False
+        self.boost_bool = False
+        self.saut=False
 
 
     def sens_v(self) :  #+-1,0 (gauche/droite)
@@ -132,15 +136,6 @@ class Car :
                 self.teta_dot += 1
             elif teta < 0:
                 self.teta_dot -= 1
-
-
-x=500
-y=90
-vx=0
-vy=0
-teta=0
-teta_dot=0
-        
 
 
          
