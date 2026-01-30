@@ -104,7 +104,7 @@ class Car :
         L = self.length
         h = self.height
 
-        for contactpoint in get_contact_points():
+        for contactpoint in self.get_contact_points():
             vector = contactpoint - pos
             normal_vectors.append(vector/np.linalg.norm(vector))
 
