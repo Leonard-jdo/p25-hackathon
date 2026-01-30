@@ -18,8 +18,8 @@ class Ballon:
         self.vy = vy
         self.m = m
         self.r = r
-        self.BUT_BAS = 90
-        self.BUT_HAUT = 500
+        self.BUT_BAS = 40
+        self.BUT_HAUT = 400
     
     def reset_position(self):
         self.x = (BORD1+BORD2)/2
