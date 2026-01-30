@@ -19,7 +19,12 @@ def input():
         descelerated = True
     if keys[pygame.K_b]:
         boost = True
+    if keys[pygame.K_UP]:
+        sens_antihoraire = True
+    if keys[pygame.K_DOWN]:
+        sens_horaire = True
+    
               
-    param = [accelerated, descelerated, jump, boost, quitter_jeu]
+    param = [accelerated, descelerated, sens_horaire, sens_antihoraire, jump, boost, quitter_jeu]
 
     return(param)
