@@ -1,7 +1,7 @@
 import pygame
 from car import Car
 from Ballon import Ballon
-dt = 0.05
+dt = 0.06
 BORD1, BORD2 = 75, 1320
 PLAFOND = 90
 SOL = 690
@@ -37,8 +37,8 @@ class Game:
 
         self.img_ballon = pygame.transform.scale(img_ballon, (self.ballon.r,self.ballon.r))
 
-        img_car1 = pygame.image.load("voiture.png")
-        self.img_car1 = pygame.transform.scale(img_car1, (self.car1.x,self.car1.y))
+        self.loaded_car1 = pygame.image.load("voiture.png")
+
 
 
         self.screen = pygame.display.set_mode((self.SCREEN_WIDTH,self.SCREEN_HEIGHT))
@@ -51,10 +51,19 @@ class Game:
 
     def raffraichir(self):
 
+        img_car1 = pygame.transform.scale(self.loaded_car1, (self.car1.x,self.car1.y))
+        img_car1_tournee = pygame.transform.rotate(img_car1, self.car1.teta)
+        new_rect = img_car1_tournee.get_rect()
+
+        target_y = PLAFOND +SOL - self.car1.y
+        new_rect.center = (self.car1.x, target_y)
         
         
         self.screen.blit(self.background, (0, 0))
         self.screen.blit(self.img_ballon, (self.ballon.x, self.ballon.y))
+        self.screen.blit(img_car1_tournee, new_rect)
+
+        self.screen.blit(self.img_car1_tournee)
 
         pygame.display.flip()
         self.clock.tick(30)
