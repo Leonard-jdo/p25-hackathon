@@ -50,13 +50,11 @@ class Car :
                 self.vy=-(g+alpha/m*self.vy)*dt + self.vy
                 self.vx=self.vx -alpha*dt/m*self.vx
 
-        
-    def update_air(self):
-        if self.onsol==False:
-            
+        self.x=self.vx*dt+self.x
+        self.y=self.vy*dt+self.y
 
-    
-    def saut(self):
+        
+
 
 
 
