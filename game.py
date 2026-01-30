@@ -25,7 +25,6 @@ class Game:
         self.car1.update()
         self.car1.contact_mur()
         contact_ballon(self.car1, self.ballon, 0.5, 15)
-        print(self.car1.x, self.car1.y,)
         
 
 
