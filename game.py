@@ -56,7 +56,7 @@ class Game:
 
         self.raffraichir()
 
-        img_car1 = pygame.transform.scale(self.loaded_car1, (self.car1.x,self.car1.y))
+        img_car1 = pygame.transform.scale(self.loaded_car1, (100,50))
         img_car1_tournee = pygame.transform.rotate(img_car1, self.car1.teta)
         new_rect = img_car1_tournee.get_rect()
 
