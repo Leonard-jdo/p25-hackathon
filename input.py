@@ -5,6 +5,7 @@ def inputs():
     accelerated = False
     descelerated = False
     jump = False
+    sens_horaire=False
     boost = False
 
     for event in pygame.event.get():
@@ -27,6 +28,6 @@ def inputs():
         sens_horaire = True
     
               
-    param = [accelerated, descelerated, sens_horaire, sens_antihoraire, jump, boost, quitter_jeu]
+    param = accelerated, descelerated, sens_horaire, sens_antihoraire, jump, boost, quitter_jeu
 
     return(param)
