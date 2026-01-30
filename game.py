@@ -3,6 +3,7 @@ from car import Car
 from Ballon import Ballon
 from constantes import dt, BORD1,BORD2,PLAFOND,SOL, alpha,g
 from contact import contact_ballon
+import math
 
 class Game:    
 
@@ -89,20 +90,21 @@ class Game:
 
         # 1. Gestion Voiture
         img_car1 = pygame.transform.scale(self.loaded_car1, (100, 50))
-        img_car1_tournee = pygame.transform.rotate(img_car1, self.car1.teta)
+        angle_degres = -math.degrees(self.car1.teta)
+        img_car1_tournee = pygame.transform.rotate(img_car1, angle_degres)
         new_rect = img_car1_tournee.get_rect()
 
-        target_y = PLAFOND +SOL - self.car1.y
+        target_y =  self.car1.y
         new_rect.center = (self.car1.x, target_y)
         
         # 2. Gestion Balle 
         ball_rect = self.img_ballon.get_rect()
-        ball_target_y = (SOL + PLAFOND) - self.ballon.y
+        ball_target_y =  self.ballon.y
         ball_rect.center = (self.ballon.x, ball_target_y)
 
         # 3. Dessin
         self.screen.blit(self.background, (0, 0))
-        self.screen.blit(self.img_ballon, (self.ballon.x, PLAFOND+SOL- self.ballon.y))
+        self.screen.blit(self.img_ballon, (self.ballon.x - self.ballon.r, self.ballon.y - self.ballon.r))
         self.screen.blit(img_car1_tournee, new_rect)
 
         #BUT
