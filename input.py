@@ -1,6 +1,6 @@
 import pygame
 
-def input():
+def inputs():
 
     accelerated = False
     descelerated = False
