@@ -6,20 +6,20 @@ def input():
     boost = False
 
     for event in pygame.event.get():
-        
         if event.type == pygame.QUIT:
-            quitter_jeu = True
-            
+            quitter_jeu = True  
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
                 jump = True
-            if event.key == pygame.K_RIGHT:
-                accelerated = True
-            if event.key == pygame.K_LEFT:
-                descelerated = True
-            if event.key == pygame.K_b:
-                boost = True
                 
-            param = [accelerated, descelerated, jump, boost, quitter_jeu]
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_LEFT]:
+        accelerated = True
+    if keys[pygame.K_RIGHT]:
+        descelerated = True
+    if keys[pygame.K_b]:
+        boost = True
+              
+    param = [accelerated, descelerated, jump, boost, quitter_jeu]
 
     return(param)
