@@ -1,5 +1,7 @@
 import numpy as np
-from game import SOL, BORD1, BORD2, PLAFOND
+BORD1, BORD2 = 75, 1320
+PLAFOND = 90
+SOL = 690
 dt=0.06
 g=9.81
 alpha=0.5
