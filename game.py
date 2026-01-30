@@ -36,15 +36,13 @@ class Game:
         background = pygame.image.load("bcakground.png").convert()
         self.background = pygame.transform.scale(background, (self.SCREEN_WIDTH,self.SCREEN_HEIGHT))
         img_ballon = pygame.image.load("balle.png")
-        img_car1 = pygame.image.load("voiture.png")
+        self.loaded_car1 = pygame.image.load("voiture.png")
 
         #Ici changer la scale pour que visuellement ça match
 
         self.img_ballon = pygame.transform.scale(img_ballon, (self.ballon.r,self.ballon.r))
 
-        self.car1 = pygame.transform.scale(img_car1, (self.car1.length, self.car1.height))
-
-
+        
 
         self.screen = pygame.display.set_mode((self.SCREEN_WIDTH,self.SCREEN_HEIGHT))
         self.clock = pygame.time.Clock()
