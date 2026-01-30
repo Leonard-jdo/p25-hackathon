@@ -1,11 +1,9 @@
 import numpy as np
-from constantes import SOL, BORD1, BORD2, PLAFOND
+from constantes import SOL, BORD1, BORD2, PLAFOND,dt,alpha,g
 from math import cos
 from input import inputs
 
-dt=0.06
-g=9.81
-alpha=0.5
+
 v_h=15 #augmentation de la vitesse quand le mec appuis sur la flèche gauche ou droite au sol
 v_saut=10 #vitesse verticale du saut
 v_boost=10
@@ -58,7 +56,7 @@ class Car:
         return 0
 
     def onsol(self):
-        if self.y <= self.height/2 + SOL:
+        if self.y <= self.height/2 + SOL+3:
             return True
         return False
 
@@ -134,8 +132,8 @@ class Car:
             self.vx = -0.2*self.vx
             self.vy = 0.5*self.vy
 
-            teta = to_pi_minuspi(self.teta)
+            theta = to_pi_minuspi(self.teta)
             if theta > 0 :
                 self.teta_dot += 1
-            elif teta < 0:
+            elif theta < 0:
                 self.teta_dot -= 1

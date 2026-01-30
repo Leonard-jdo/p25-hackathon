@@ -6,10 +6,7 @@ game.init_affichage()
 
 i = 0
 while i < 200:
-    for event in pygame.event.get():
 
-        if event.type == pygame.QUIT:
-            running = False
     game.raffraichir_img()
     i +=1 
         
