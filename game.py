@@ -69,7 +69,7 @@ class Game:
     def init_affichage(self): 
             
             pygame.init()
-            
+            self.police_score = pygame.font.SysFont("Arial", 50, bold=True)
             # On crée la fenêtre UNE SEULE FOIS
             self.screen = pygame.display.set_mode((self.SCREEN_WIDTH, self.SCREEN_HEIGHT))
             
@@ -90,6 +90,7 @@ class Game:
             self.affichage_but_timer = 0
             self.message_but = ""
             self.couleur_but = (0, 0, 0)
+            
             
         
 
@@ -128,6 +129,16 @@ class Game:
             
             # On décompte le timer
             self.affichage_but_timer -= 1
+        # Score Orange (à gauche)
+        texte_orange = self.police_score.render(f"ORANGE : {self.score_orange}", True, (255, 165, 0))
+        largeur_orange = texte_orange.get_width()
+        self.screen.blit(texte_orange, (self.SCREEN_WIDTH - largeur_orange - 50, 20)) # Position 50px du bord gauche, 20px du haut
+ 
+        # Score Bleu (à droite)
+        texte_bleu = self.police_score.render(f"BLEU : {self.score_bleu}", True, (0, 0, 255))
+        # On calcule la largeur pour que le texte soit bien aligné à droite
+        
+        self.screen.blit(texte_bleu, (50, 20))
 
         pygame.display.flip()
         self.clock.tick(60) 

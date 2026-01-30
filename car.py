@@ -75,6 +75,11 @@ class Car:
             
             # La réaction du sol annule la gravité
             ay -= g * 50 
+            if self.boost() == 1:
+                poussee = v_boost * 100
+                ax += cos(self.teta) * poussee
+                ay += sin(self.teta) * poussee
+
 
             # Déplacement au sol (Moteur)
             # On utilise sens_v() comme dans votre fichier original

@@ -1,4 +1,4 @@
-g=9.81
+g=14
 alpha=0.5
 v_h=15 #augmentation de la vitesse quand le mec appuis sur la flèche gauche ou droite au sol
 v_saut=10 #vitesse verticale du saut
