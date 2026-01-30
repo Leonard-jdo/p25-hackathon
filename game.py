@@ -15,7 +15,7 @@ class Game:
         self.score = 0
         self.time = 0
         self.car1 = Car(300,300,0,0)
-        self.ballon = Ballon(0, 0, 20, 80)
+        self.ballon = Ballon(0, 0, 2, 80)
 
 
     def raffraichir(self):
@@ -30,46 +30,44 @@ class Game:
 
     def init_affichage(self): 
         pygame.init()
-
         self.SCREEN_WIDTH = 1400
         self.SCREEN_HEIGHT = 900
-        pygame.display.set_mode((self.SCREEN_WIDTH,self.SCREEN_HEIGHT))
-        background = pygame.image.load("bcakground.png").convert()
-        self.background = pygame.transform.scale(background, (self.SCREEN_WIDTH,self.SCREEN_HEIGHT))
-        img_ballon = pygame.image.load("balle.png")
-        self.loaded_car1 = pygame.image.load("voiture.png")
-
-        #Ici changer la scale pour que visuellement ça match
-
-        self.img_ballon = pygame.transform.scale(img_ballon, (self.ballon.r,self.ballon.r))
-
+        # On crée la fenêtre UNE SEULE FOIS
+        self.screen = pygame.display.set_mode((self.SCREEN_WIDTH, self.SCREEN_HEIGHT))
         
-
-        self.screen = pygame.display.set_mode((self.SCREEN_WIDTH,self.SCREEN_HEIGHT))
+        # Chargement et optimisation (convert_alpha pour la balle et voiture)
+        background = pygame.image.load("bcakground.png").convert()
+        self.background = pygame.transform.scale(background, (self.SCREEN_WIDTH, self.SCREEN_HEIGHT))
+        
+        img_ballon = pygame.image.load("balle.png").convert_alpha()
+        # On scale au DIAMÈTRE (2 * r)
+        self.img_ballon = pygame.transform.scale(img_ballon, (self.ballon.r * 2, self.ballon.r * 2))
+        
+        self.loaded_car1 = pygame.image.load("voiture.png").convert_alpha()
         self.clock = pygame.time.Clock()
-        self.screen.blit(background, (0, 0))
-
-
-        pygame.display.flip()
-
 
     def raffraichir_img(self):
+        self.raffraichir() # Ta physique
 
-        self.raffraichir()
-
-        img_car1 = pygame.transform.scale(self.loaded_car1, (100,50))
+        # 1. Gestion Voiture
+        img_car1 = pygame.transform.scale(self.loaded_car1, (100, 50))
         img_car1_tournee = pygame.transform.rotate(img_car1, self.car1.teta)
         new_rect = img_car1_tournee.get_rect()
 
-        target_y =  self.car1.y
+        target_y = PLAFOND +SOL - self.car1.y
         new_rect.center = (self.car1.x, target_y)
         
-        
+        # 2. Gestion Balle (on centre l'image sur sa position physique)
+        ball_rect = self.img_ballon.get_rect()
+        ball_target_y = (SOL + PLAFOND) - self.ballon.y
+        ball_rect.center = (self.ballon.x, ball_target_y)
+
+        # 3. Dessin
         self.screen.blit(self.background, (0, 0))
-        self.screen.blit(self.img_ballon, (self.ballon.x, self.ballon.y))
+        self.screen.blit(self.img_ballon, (self.ballon.x, PLAFOND+SOL- self.ballon.y))
         self.screen.blit(img_car1_tournee, new_rect)
 
         pygame.display.flip()
-        self.clock.tick(30)
+        self.clock.tick(60) # 60 FPS c'est mieux pour Rocket League ;)
 
 
