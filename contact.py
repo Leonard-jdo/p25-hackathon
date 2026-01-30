@@ -1,6 +1,7 @@
 import numpy as np 
 from math import sqrt
-
+from car import Car
+from game import Game
 
 
 def contact_ballon(car,ballon,e,C):
