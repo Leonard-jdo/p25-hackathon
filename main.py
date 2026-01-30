@@ -5,7 +5,7 @@ game = Game()
 game.init_affichage()
 
 i = 0
-while i < 100:
+while i < 200:
     for event in pygame.event.get():
 
         if event.type == pygame.QUIT:

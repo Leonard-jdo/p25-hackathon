@@ -3,8 +3,8 @@ from car import Car
 from Ballon import Ballon
 dt = 0.05
 BORD1, BORD2 = 75, 1320
-PLAFOND = 690
-SOL = 90
+PLAFOND = 90
+SOL = 690
 
 
 class Game:    
@@ -32,7 +32,13 @@ class Game:
         background = pygame.image.load("bcakground.png").convert()
         self.background = pygame.transform.scale(background, (self.SCREEN_WIDTH,self.SCREEN_HEIGHT))
         img_ballon = pygame.image.load("balle.png")
+
+        #Ici changer la scale pour que visuellement ça match
+
         self.img_ballon = pygame.transform.scale(img_ballon, (self.ballon.r,self.ballon.r))
+
+        img_car1 = pygame.image.load("voiture.png")
+        self.img_car1 = pygame.transform.scale(img_car1, (self.car1.x,self.car1.y))
 
 
         self.screen = pygame.display.set_mode((self.SCREEN_WIDTH,self.SCREEN_HEIGHT))
