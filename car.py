@@ -8,8 +8,8 @@ alpha=0.5
 v_h=15 #augmentation de la vitesse quand le mec appuis sur la flèche gauche ou droite au sol
 v_saut=10 #vitesse verticale du saut
 v_boost=10
-demi_h=0.5
-demi_l=0.56
+demi_h=0.1
+demi_l=0.4
 k=10
 
 def to_pi_minuspi(x):
@@ -134,10 +134,3 @@ class Car :
                 self.teta_dot += 1
             elif teta < 0:
                 self.teta_dot -= 1
-
-
-         
-
-
-
-
