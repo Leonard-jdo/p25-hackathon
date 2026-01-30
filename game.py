@@ -10,13 +10,11 @@ class Game:
         pygame.init()
         self.screen = pygame.display.set_mode((800, 600))
         self.clock = pygame.time.Clock()
-        screen.blit(background, (0, 0))
-        screen.blit(ballon, (400, 300))
-        screen.blit(car1, (0, 0))
-        screen.blit(car2, (800, 0))
+        self.screen.blit(background, (0, 0))
+        self.screen.blit(ballon, (400, 300))
+        self.screen.blit(car1, (0, 0))
+        self.screen.blit(car2, (800, 0))
         pygame.display.flip()
-
-
 
 
 
@@ -33,4 +31,5 @@ class Game:
         clock.tick(60)
 
     pygame.quit()
+
 
