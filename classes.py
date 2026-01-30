@@ -28,7 +28,7 @@ class Car :
 
 
     def onsol(self):
-        if self.y==0:
+        if self.y <= self.height/2 + SOL:
             return True
         return False
 
