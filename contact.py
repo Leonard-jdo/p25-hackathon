@@ -10,16 +10,16 @@ def contact_ballon(car,ballon,e,C):
 
     pts_proches=car.get_contact_points()
     Vecteurs_n=car.get_normal_vectors()
-    if ballon.r+ sqrt((car.length**2+car.height**2)/4)>=sqrt((car.x-ballon.x)**2+(car.y-ballon.y)**2):
+    if ballon.r+ sqrt((car.length**2+car.height**2)/4)<=sqrt((car.x-ballon.x)**2+(car.y-ballon.y)**2):
         return
     for i in range (len(pts_proches)):
-        d= np.square((pts_proches[i][0]-ballon.x)**2+(pts_proches[i][1]-ballon.y)**2)
+        d= np.sqrt((pts_proches[i][0]-ballon.x)**2+(pts_proches[i][1]-ballon.y)**2)
         
         if d<pts_proche:
 
             pts_proche=d
             k=i
-    if pts_proche<=np.square(ballon.r):
+    if pts_proche<=np.sqrt(ballon.r):
 
         v_relat=np.array([-car.vx+ballon.vx,-car.vy+ballon.vy])
         v_norm=v_relat/np.linalg.norm(v_relat)
@@ -35,8 +35,8 @@ def contact_ballon(car,ballon,e,C):
             if k in [1,3]:
                 car.teta_dot+=C*bras_de_levier*np.linalg.norm(ballon.m*v_relat)
 
-        vcar=np.square(car.vx**2+car.vy**2)
-        vballon=np.square(ballon.vx**2+ballon.vy**2)     
+        vcar=np.sqrt(car.vx**2+car.vy**2)
+        vballon=np.sqrt(ballon.vx**2+ballon.vy**2)     
 
         vballon_ap = (ballon.m * vballon + car.m * vcar + car.m * e * (vcar - vballon)) / (car.m + ballon.m)
         
