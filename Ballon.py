@@ -25,21 +25,21 @@ class Ballon:
         self.corr_contact()
 
     def corr_contact(self, taille):
-        (x_lim, y_lim) = taille
-        if self.x + self.r > x_lim:#contact à droite
-            self.x = x_lim - self.r  
+        (bord1, bord2, plafond) = taille
+        if self.x + self.r > bord2:#contact à droite
+            self.x = bord2 - self.r  
             self.vx = -self.vx 
             
-        elif self.x - self.r < 0:#contact à gauche
-            self.x = self.r                
+        elif self.x - self.r < bord1:#contact à gauche
+            self.x = self.r + bord1               
             self.vx = -self.vx 
             
         if self.y - self.r < 0:#contact au sol
             self.y = self.r               
             self.vy = -self.vy 
 
-        if self.y + self.r > y_lim:#contact mur 
-            self.y = y_lim - self.r 
+        if self.y + self.r > plafond:#contact mur 
+            self.y = plafond - self.r 
             self.vy = -self.vy 
 
     
