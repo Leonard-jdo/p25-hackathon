@@ -39,6 +39,8 @@ class Game:
 
 
     def raffraichir(self):
+
+        
         
         self.screen.blit(self.background, (0, 0))
         self.screen.blit(self.img_ballon, (self.ballon.x, self.ballon.y))
