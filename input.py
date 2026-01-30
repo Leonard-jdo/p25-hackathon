@@ -6,8 +6,9 @@ def inputs():
     descelerated = False
     jump = False
     sens_horaire=False
+    sens_antihoraire=False
     boost = False
-
+    quitter_jeu = False
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             quitter_jeu = True  
