@@ -16,7 +16,7 @@ class Game:
         self.score = 0
         self.time = 0
         self.car1 = Car(300,300,0,0)
-        self.ballon = Ballon(0, 0, 6, 80)
+        self.ballon = Ballon(0, 0, 8, 80)
 
 
     def raffraichir(self):
@@ -60,12 +60,12 @@ class Game:
         
         # 2. Gestion Balle (on centre l'image sur sa position physique)
         ball_rect = self.img_ballon.get_rect()
-        ball_target_y =  self.ballon.y
-        ball_rect.center = (self.ballon.x, ball_target_y)
+        
+        ball_rect.center = (int(self.ballon.x), int(self.ballon.y))
 
         # 3. Dessin
         self.screen.blit(self.background, (0, 0))
-        self.screen.blit(self.img_ballon, (self.ballon.x, self.ballon.y))
+        self.screen.blit(self.img_ballon, ball_rect)
         self.screen.blit(img_car1_tournee, new_rect)
 
         pygame.display.flip()
