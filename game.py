@@ -1,7 +1,7 @@
 import pygame
 from car import Car
 from Ballon import Ballon
-from constantes import dt, BORD1,BORD2,PLAFOND,SOL, alpha
+from constantes import dt, BORD1,BORD2,PLAFOND,SOL, alpha,g
 from contact import contact_ballon
 
 class Game:    
@@ -15,12 +15,12 @@ class Game:
         self.score = 0
         self.time = 0
         self.car1 = Car(300,300,0,0)
-        self.ballon = Ballon(0, 0, 2, 80)
+        self.ballon = Ballon(0, 0, 20, 80)
 
 
     def raffraichir(self):
 
-        self.ballon.gravity_without_contact(10e-3, 10e-2)
+        self.ballon.gravity_without_contact(alpha, g)
         self.car1.update()
         self.car1.contact_mur()
         contact_ballon(self.car1, self.ballon, 0.5, 15)
@@ -28,7 +28,7 @@ class Game:
         
 
 
-    def init_affichage(self):
+    def init_affichage(self): 
         pygame.init()
 
         self.SCREEN_WIDTH = 1400
@@ -61,12 +61,12 @@ class Game:
         img_car1_tournee = pygame.transform.rotate(img_car1, self.car1.teta)
         new_rect = img_car1_tournee.get_rect()
 
-        target_y = PLAFOND +SOL - self.car1.y
+        target_y =  self.car1.y
         new_rect.center = (self.car1.x, target_y)
         
         
         self.screen.blit(self.background, (0, 0))
-        self.screen.blit(self.img_ballon, (self.ballon.x, PLAFOND+SOL- self.ballon.y))
+        self.screen.blit(self.img_ballon, (self.ballon.x, self.ballon.y))
         self.screen.blit(img_car1_tournee, new_rect)
 
         pygame.display.flip()
