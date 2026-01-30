@@ -54,17 +54,17 @@ class Game:
         img_car1_tournee = pygame.transform.rotate(img_car1, self.car1.teta)
         new_rect = img_car1_tournee.get_rect()
 
-        target_y = PLAFOND +SOL - self.car1.y
+        target_y =  self.car1.y
         new_rect.center = (self.car1.x, target_y)
         
         # 2. Gestion Balle (on centre l'image sur sa position physique)
         ball_rect = self.img_ballon.get_rect()
-        ball_target_y = (SOL + PLAFOND) - self.ballon.y
+        ball_target_y =  self.ballon.y
         ball_rect.center = (self.ballon.x, ball_target_y)
 
         # 3. Dessin
         self.screen.blit(self.background, (0, 0))
-        self.screen.blit(self.img_ballon, (self.ballon.x, PLAFOND+SOL- self.ballon.y))
+        self.screen.blit(self.img_ballon, (self.ballon.x, self.ballon.y))
         self.screen.blit(img_car1_tournee, new_rect)
 
         pygame.display.flip()
