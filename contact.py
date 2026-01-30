@@ -3,7 +3,7 @@ import numpy as np
 
 
 
-def contact_ballon(car,ballon,e,C,M):
+def contact_ballon(car,ballon,e,C):
     k=0
 
     pts_proche=0
