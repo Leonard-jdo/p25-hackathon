@@ -64,7 +64,7 @@ class Game:
 
         # 3. Dessin
         self.screen.blit(self.background, (0, 0))
-        self.screen.blit(self.img_ballon, (self.ballon.x, self.ballon.y))
+        self.screen.blit(self.img_ballon, (self.ballon.x - self.ballon.r, self.ballon.y - self.ballon.r))
         self.screen.blit(img_car1_tournee, new_rect)
 
         pygame.display.flip()

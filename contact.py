@@ -1,7 +1,6 @@
 import numpy as np 
 from math import sqrt
-from car import Car
-from game import Game
+
 
 
 def contact_ballon(car,ballon,e,C):
@@ -12,7 +11,7 @@ def contact_ballon(car,ballon,e,C):
     pts_proches=car.get_contact_points()
     Vecteurs_n=car.get_normal_vectors()
     if ballon.r+ sqrt((car.length**2+car.height**2)/4)>=sqrt((car.x-ballon.x)**2+(car.y-ballon.y)**2):
-        pass
+        return
     for i in range (len(pts_proches)):
         d= np.square((pts_proches[i][0]-ballon.x)**2+(pts_proches[i][1]-ballon.y)**2)
         
