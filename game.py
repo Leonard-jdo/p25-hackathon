@@ -15,7 +15,7 @@ class Game:
         self.score = 0
         self.time = 0
         self.car1 = Car(300,300,0,0)
-        self.ballon = Ballon(700, 500, 0, 0, 2, 80)
+        self.ballon = Ballon(0, 0, 2, 80)
 
 
     def raffraichir(self):
@@ -23,7 +23,7 @@ class Game:
         self.ballon.gravity_without_contact(10e-3, 10e-2)
         self.car1.update()
         self.car1.contact_mur()
-        contact_ballon(self.car1, self.ballon, 0.5, 15, self.ballon.m)
+        contact_ballon(self.car1, self.ballon, 0.5, 15)
         
 
 
@@ -56,7 +56,7 @@ class Game:
     def raffraichir_img(self):
 
         self.raffraichir()
-        
+
         img_car1 = pygame.transform.scale(self.loaded_car1, (self.car1.x,self.car1.y))
         img_car1_tournee = pygame.transform.rotate(img_car1, self.car1.teta)
         new_rect = img_car1_tournee.get_rect()
@@ -66,10 +66,8 @@ class Game:
         
         
         self.screen.blit(self.background, (0, 0))
-        self.screen.blit(self.img_ballon, (self.ballon.x, self.ballon.y))
+        self.screen.blit(self.img_ballon, (self.ballon.x, PLAFOND+SOL- self.ballon.y))
         self.screen.blit(img_car1_tournee, new_rect)
-
-        self.screen.blit(self.img_car1_tournee)
 
         pygame.display.flip()
         self.clock.tick(30)

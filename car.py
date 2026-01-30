@@ -101,10 +101,8 @@ class Car :
         normal_vectors=[]
         x = self.x
         y = self.y
-        pos = np.array(x,y)
-        theta = self.teta
+        pos = np.array([x,y])
         L = self.length
-        h = self.height
 
         for contactpoint in self.get_contact_points():
             vector = contactpoint - pos

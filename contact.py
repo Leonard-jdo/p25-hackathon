@@ -1,5 +1,5 @@
 import numpy as np 
-
+from math import sqrt
 
 
 
@@ -9,22 +9,22 @@ def contact_ballon(car,ballon,e,C):
     pts_proche=0
 
     pts_proches=car.get_contact_points()
-    Vecteurs_n=car.get_normal_vector()
-    if ballon.rayon+car.np.square((car.lenght+car.height)/2)>=np.square((car.x-ballon.x)**2+(car.y-ballon.y)**2):
+    Vecteurs_n=car.get_normal_vectors()
+    if ballon.r+ sqrt((car.length**2+car.height**2)/4)>=sqrt((car.x-ballon.x)**2+(car.y-ballon.y)**2):
         pass
-    for i in range (len(car.pts_contact)):
-        d= np.square((car.pts_contact[i][0]-ballon.x)**2+(car.pts_contact[i][1]-ballon.y)**2)
+    for i in range (len(pts_proches)):
+        d= np.square((pts_proches[i][0]-ballon.x)**2+(pts_proches[i][1]-ballon.y)**2)
         
         if d<pts_proche:
 
             pts_proche=d
             k=i
-    if pts_proche<=np.square(ballon.rayon):
+    if pts_proche<=np.square(ballon.r):
 
         v_relat=np.array([-car.vx+ballon.vx,-car.vy+ballon.vy])
         v_norm=v_relat/np.linalg.norm(v_relat)
         angle=np.dot(v_norm,Vecteurs_n[k])
-        signe=v_relat[1].sign()
+        signe=np.sign(v_relat[1])
         angles_depart=car.teta+signe*((np.pi)/2-angle)
         v_direction=np.array([np.cos(angles_depart),np.sin(angles_depart)])
         if k in[0,1,2,3]:

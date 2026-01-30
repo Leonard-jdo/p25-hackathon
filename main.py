@@ -10,7 +10,7 @@ while i < 200:
 
         if event.type == pygame.QUIT:
             running = False
-    game.raffraichir()
+    game.raffraichir_img()
     i +=1 
         
     # Une fois la boucle terminée, on quitte proprement pygame
