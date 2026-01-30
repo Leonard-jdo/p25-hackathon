@@ -2,6 +2,11 @@ import pygame
 #from car import Car
 from Ballon import Ballon
 dt = 0.05
+BORD1, BORD2 = 75, 1320
+PLAFOND = 90
+SOL = 690
+
+
 class Game:    
 
     #ballon = pygame.image.load("ballon.png").convert_alpha()
