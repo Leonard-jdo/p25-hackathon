@@ -1,6 +1,6 @@
 import numpy as np
 from game import SOL, BORD1, BORD2, PLAFOND
-dt=0.06
+dt=0.05
 g=9.81
 alpha=0.5
 v_h=15 #augmentation de la vitesse quand le mec appuis sur la flèche gauche ou droite au sol
