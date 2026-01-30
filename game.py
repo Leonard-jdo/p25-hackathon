@@ -1,6 +1,6 @@
 import pygame
 #from car import Car
-from Ballon import Ballon
+from ballon import Ballon
 
 class Game:
     
@@ -40,7 +40,5 @@ class Game:
 
         pygame.display.flip()
         self.clock.tick(30)
-
-
 
 
