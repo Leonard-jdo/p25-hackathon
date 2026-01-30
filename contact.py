@@ -30,10 +30,10 @@ def contact_ballon(car,ballon,e,C,M):
         if k in[0,1,2,3]:
             bras_de_levier=np.abs((car.x-pts_proches[k][0])*v_direction[1]-(car.y-pts_proches[k][1])*v_direction[0])
             if k in [0,2]:
-                car.teta_dot-=C*bras_de_levier*np.linalg.norm(M*v_relat)
+                car.teta_dot-=C*bras_de_levier*np.linalg.norm(ballon.m*v_relat)
 
             if k in [1,3]:
-                car.teta_dot+=C*bras_de_levier*np.linalg.norm(M*v_relat)
+                car.teta_dot+=C*bras_de_levier*np.linalg.norm(ballon.m*v_relat)
 
         vcar=np.square(car.vx**2+car.vy**2)
         vballon=np.square(ballon.vx**2+ballon.vy**2)     
