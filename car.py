@@ -18,8 +18,8 @@ class Car:
     def __init__(self,x=500,y=90,vx=0,vy=0,teta=0,teta_dot=0):
         self.m = 15
         self.x = x
-        self.length=10
-        self.height=4
+        self.length=100
+        self.height=50
         self.y=y
         self.vx=vx
         self.vy=vy

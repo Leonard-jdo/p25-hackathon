@@ -12,7 +12,7 @@ beta = 0.8
 class Ballon:
 
     def __init__(self, vx, vy,m,r):
-        self.x = (BORD1+BORD2)/2
+        self.x = (BORD1+BORD2)/2 -35
         self.y = SOL + r
         self.vx = vx
         self.vy = vy

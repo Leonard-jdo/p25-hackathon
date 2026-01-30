@@ -6,7 +6,6 @@ game.init_affichage()
 
 i = 0
 while i < 200:
-
     game.raffraichir_img()
     i +=1 
         
