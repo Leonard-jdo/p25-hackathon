@@ -1,7 +1,7 @@
 BORD1, BORD2 = 75, 1320
 PLAFOND = 690
 SOL = 90
-dt = 0.01
+dt = 0.06
 bord1 = 10
 bord2 = 1780
 plafond = 500
@@ -35,20 +35,20 @@ class Ballon:
         self.corr_contact()
 
     def corr_contact(self):
-        if self.x + self.r > bord2:#contact à droite
-            self.x = bord2 - self.r  
+        if self.x + self.r >= BORD2:#contact à droite
+            self.x = BORD2 - self.r  
             self.vx = -self.vx * beta 
             
-        elif self.x - self.r < bord1:#contact à gauche
-            self.x = self.r + bord1               
+        elif self.x - self.r <= BORD1:#contact à gauche
+            self.x = self.r + BORD1               
             self.vx = -self.vx * beta
             
-        if self.y - self.r < sol:#contact au sol
-            self.y = self.r + sol               
+        if self.y - self.r <= SOL:#contact au sol
+            self.y = self.r + SOL               
             self.vy = -self.vy * beta 
 
-        if self.y + self.r > plafond:#contact mur 
-            self.y = plafond - self.r 
+        if self.y + self.r >= PLAFOND:#contact mur 
+            self.y = PLAFOND - self.r 
             self.vy = -self.vy * beta
 
     
