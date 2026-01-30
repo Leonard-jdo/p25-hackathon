@@ -1,4 +1,4 @@
-#from game import dt, y_sol, y_plafond
+dt = 
 bord1 =
 bord2 = 
 plafond = 
