@@ -1,3 +1,6 @@
+BORD1, BORD2 = 75, 1320
+PLAFOND = 690
+SOL = 90
 dt = 0.01
 bord1 = 10
 bord2 = 1780
@@ -8,9 +11,9 @@ beta = 0.8
 g = 9,81
 class Ballon:
 
-    def __init__(self, x, y, vx, vy,m,r):
-        self.x = x
-        self.y = y
+    def __init__(self, vx, vy,m,r):
+        self.x = (BORD1+BORD2)/2
+        self.y = SOL + r
         self.vx = vx
         self.vy = vy
         self.m = m
