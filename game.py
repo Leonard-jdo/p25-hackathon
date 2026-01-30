@@ -24,9 +24,12 @@ class Game:
         
         # Création des Rect (en coordonnées Pygame)
         # But Gauche
+        self.SCREEN_WIDTH = 1400
+        self.SCREEN_HEIGHT = 900
         self.rect_but_gauche = pygame.Rect(0, 300, self.goal_width, self.goal_height)
         # But Droit
         self.rect_but_droit = pygame.Rect(self.SCREEN_WIDTH - self.goal_width, 300, self.goal_width, self.goal_height)
+        
 
 
     def raffraichir(self):
@@ -54,16 +57,9 @@ class Game:
 
 
     def init_affichage(self): 
-            pygame.font.init()
-            self.police_but = pygame.font.SysFont("Arial", 100, bold=True)
             
-            # Variables pour l'animation du but
-            self.affichage_but_timer = 0
-            self.message_but = ""
-            self.couleur_but = (0, 0, 0)
             pygame.init()
-            self.SCREEN_WIDTH = 1400
-            self.SCREEN_HEIGHT = 900
+            
             # On crée la fenêtre UNE SEULE FOIS
             self.screen = pygame.display.set_mode((self.SCREEN_WIDTH, self.SCREEN_HEIGHT))
             
@@ -77,6 +73,13 @@ class Game:
             
             self.loaded_car1 = pygame.image.load("voiture.png").convert_alpha()
             self.clock = pygame.time.Clock()
+            pygame.font.init()
+            self.police_but = pygame.font.SysFont("Arial", 100, bold=True)
+            
+            # Variables pour l'animation du but
+            self.affichage_but_timer = 0
+            self.message_but = ""
+            self.couleur_but = (0, 0, 0)
             
         
 
