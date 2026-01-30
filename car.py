@@ -80,7 +80,7 @@ class Car :
         contact_points = []
         x = self.x
         y = self.y
-        theta = self.theta
+        theta = self.teta
         L = self.length
         h = self.height
 
@@ -98,7 +98,7 @@ class Car :
         x = self.x
         y = self.y
         pos = np.array(x,y)
-        theta = self.theta
+        theta = self.teta
         L = self.length
         h = self.height
 
@@ -109,19 +109,42 @@ class Car :
         return normal_vectors
 
         
+    def contact_mur(self):
+        if self.x - (self.length/2)*abs(cos(self.teta)) <= BORD1:
+            self.x = 0
+            self.vx = -0.2*self.vx
+            self.vy = 0.5*self.vy
+
+            theta = to_pi_minuspi(self.teta)
+            if theta > 0 :
+                self.teta_dot += 1
+            elif theta < 0:
+                self.teta_dot -= 1
 
 
+        if self.x + (self.length/2)*abs(cos(self.teta)) >= BORD2:
+            self.x = 0
+            self.vx = -0.2*self.vx
+            self.vy = 0.5*self.vy
+
+            teta = to_pi_minuspi(self.teta)
+            if theta > 0 :
+                self.teta_dot += 1
+            elif teta < 0:
+                self.teta_dot -= 1
 
 
+x=500
+y=90
+vx=0
+vy=0
+teta=0
+teta_dot=0
         
 
 
          
 
 
-    
 
-#discrétiqse l'espace et à chaque intstant jhe met à) jour (uodate) à partir de l'accélératiob si le mec boost et qu'il saute l'angle teta impose ou la voiture va aller
-#en input j'ai le vecteur de booléen de cez qu'il fait : accélérer, booster, gauche droite
-#
 
